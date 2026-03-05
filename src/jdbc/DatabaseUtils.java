@@ -18,7 +18,7 @@ public class DatabaseUtils {
             connection = DriverManager.getConnection(url, user, password);
 
             if(connection.isValid(2)){
-                System.out.println("Connected to database successfully");
+//                System.out.println("Connected to database successfully");
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.getMessage();

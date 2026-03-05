@@ -12,15 +12,14 @@ public class Company {
 
     public void addEmployee() {
         System.out.println("-----------Add Employee -----------");
-        System.out.println("Enter name : ");
+        System.out.print("Enter name : ");
         String name = input.nextLine();
-        System.out.println("Enter salary : ");
+        System.out.print("Enter salary : ");
         double salary = input.nextDouble();
 
         String insertEmployee = """
                insert into employees (name, salary) values (?, ?)
                """;
-
 
         try(Connection connection = DatabaseUtils.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(insertEmployee)) {
@@ -28,7 +27,7 @@ public class Company {
             preparedStatement.setDouble(2, salary);
             preparedStatement.executeUpdate();
 
-
+            System.out.println("Employee added successfully!");
         } catch (SQLException e) {
 
                 e.getMessage();
@@ -50,9 +49,11 @@ public class Company {
                 int id = resultSet.getInt("id");
                 String name = resultSet.getString("name");
                 double salary = resultSet.getDouble("salary");
-                System.out.println(id + " " + name + " " + salary);
-
+                System.out.println("-".repeat(40));
+                System.out.println("Id : " +id + " Name :  " +name + " Salary : " +salary);
+                System.out.println();
                 employees.add(new Employee(id, name, salary));
+
 
             }
         }catch (SQLException e){

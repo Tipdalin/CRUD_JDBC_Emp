@@ -58,9 +58,9 @@ public class Main {
                 }
                 break;
                 case "5": {
-                    System.out.println("Do you want to exit the program?");
-                    input.nextLine();
-                    if (input.nextLine().equals("yes")) {
+                    System.out.print("Do you want to exit the program?(y/n) : ");
+                    String op = input.nextLine();
+                    if (op.equalsIgnoreCase("y")) {
                         System.out.println("Thank you for using our application!");
                         System.exit(0);
                     }else {
